@@ -1,0 +1,11 @@
+{
+	"id": "scribble-obsidian",
+	"name": "Scribble",
+	"version": "1.0.0",
+	"minAppVersion": "0.15.0",
+	"description": "Allows drawing pictures in notes with a laptop trackpad.",
+	"author": "Justin Lopato",
+	"authorUrl": "https://github.io/lopatoj/scribble-obsidian",
+	"fundingUrl": "",
+	"isDesktopOnly": true
+}
