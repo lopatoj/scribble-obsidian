@@ -8,7 +8,7 @@ import {
   Setting,
   FileSystemAdapter,
 } from "obsidian";
-import { execFileSync } from "child_process";
+import { execFile, execFileSync } from "child_process";
 import { promisify } from "util";
 
 interface ScribbleSettings {
@@ -26,14 +26,14 @@ export default class Scribble extends Plugin {
     await this.loadSettings();
 
     const basePath = (this.app.vault.adapter as any).basePath;
-		const exec = promisify(execFileSync);
+		const exec = promisify(execFile);
 
     // This adds a simple command that can be triggered anywhere
     this.addCommand({
       id: "open-fingerpaint",
       name: "Add Touchpad Drawing",
       editorCallback: (editor: Editor, view: MarkdownView) => {
-        exec('fingerpaint --title Scribble --line-color "#ffffff" --hint "" --dark -o ' + basePath + '/image.png');
+        execFileSync('fingerpaint --title Scribble --line-color "#ffffff" --hint "" --dark -o ' + basePath + '/image.png');
         editor.setLine(editor.getCursor().line, "![](image.png)");
       },
     });
