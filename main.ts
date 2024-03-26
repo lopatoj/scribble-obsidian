@@ -33,7 +33,7 @@ export default class Scribble extends Plugin {
       id: "open-fingerpaint",
       name: "Add Touchpad Drawing",
       editorCallback: (editor: Editor, view: MarkdownView) => {
-        execFileSync('fingerpaint --title Scribble --line-color "#ffffff" --hint "" --dark -o ' + basePath + '/image.png');
+        const {stderr, stdout} = execFile('fingerpaint --title Scribble --line-color "#ffffff" --hint "" --dark -o ' + basePath + '/image.png');
         editor.setLine(editor.getCursor().line, "![](image.png)");
       },
     });
